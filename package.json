@@ -1,0 +1,25 @@
+{
+  "name": "page-path-builder",
+  "version": "1.0.0",
+  "description": "Uses a page.js-style routing string to build up a path you can link to",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "page",
+    "routing"
+  ],
+  "author": "TehShrike",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tehshrike/page-path-builder.git"
+  },
+  "devDependencies": {
+    "tape": "^3.0.0"
+  },
+  "dependencies": {
+    "path-to-regexp-with-reversible-keys": "^1.0.1"
+  }
+}
