@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/TehShrike/page-path-builder.svg)](https://travis-ci.org/TehShrike/page-path-builder)
 
 For those times when you want to programmatically generate a link to page.js route.
 
