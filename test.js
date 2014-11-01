@@ -75,3 +75,14 @@ test('throws an error if the input would fail the original regular expression', 
 	}, /Provided arguments do not match the original arguments/)
 	t.end()
 })
+
+test('puts extra parameters into the querystring', function(t) {
+	var path = buildPath('/start/:param1/wut', {
+		param1: 'inTheRoute',
+		param2: 'inTheQueryString'
+	})
+
+	t.equal(path, '/start/inTheRoute/wut?param2=inTheQueryString')
+
+	t.end()
+})

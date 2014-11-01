@@ -1,4 +1,5 @@
 var parser = require('./path-parser')
+var stringifyQuerystring = require('querystring').stringify
 
 module.exports = function(pathStr, parameters) {
 	var parsed
@@ -13,7 +14,7 @@ module.exports = function(pathStr, parameters) {
 	var regex = parsed.regex
 
 	if (parameters) {
-		var path =  allTokens.map(function(bit) {
+		var path = allTokens.map(function(bit) {
 			if (bit.string) {
 				return bit.string
 			}
@@ -29,8 +30,34 @@ module.exports = function(pathStr, parameters) {
 			throw new Error('Provided arguments do not match the original arguments')
 		}
 
-		return path
+		return buildPathWithQuerystring(path, parameters, allTokens)
 	} else {
 		return parsed
 	}
+}
+
+function buildPathWithQuerystring(path, parameters, tokenArray) {
+	var parametersInQuerystring = getParametersWithoutMatchingToken(parameters, tokenArray)
+
+	if (Object.keys(parametersInQuerystring).length === 0) {
+		return path
+	}
+
+	return path + '?' + stringifyQuerystring(parametersInQuerystring)
+}
+
+function getParametersWithoutMatchingToken(parameters, tokenArray) {
+	var tokenHash = tokenArray.reduce(function(memo, bit) {
+		if (!bit.string) {
+			memo[bit.name] = bit
+		}
+		return memo
+	}, {})
+
+	return Object.keys(parameters).filter(function(param) {
+		return !tokenHash[param]
+	}).reduce(function(newParameters, param) {
+		newParameters[param] = parameters[param]
+		return newParameters
+	}, {})
 }
