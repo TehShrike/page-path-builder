@@ -86,3 +86,13 @@ test('puts extra parameters into the querystring', function(t) {
 
 	t.end()
 })
+
+test('boolean parameter in querystring', function(t) {
+	var path = buildPath('/whatever/durr', {
+		param: true
+	})
+
+	t.equal(path, '/whatever/durr?param=true')
+
+	t.end()
+})

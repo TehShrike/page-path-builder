@@ -2,14 +2,8 @@ var parser = require('./path-parser')
 var stringifyQuerystring = require('querystring').stringify
 
 module.exports = function(pathStr, parameters) {
-	var parsed
 
-	if (typeof pathStr === 'string') {
-		parsed = parser(pathStr)
-	} else {
-		parsed = pathStr
-	}
-
+	var parsed = typeof pathStr === 'string' ? parser(pathStr) : pathStr
 	var allTokens = parsed.allTokens
 	var regex = parsed.regex
 
