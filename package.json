@@ -4,7 +4,7 @@
   "description": "Uses a page.js-style routing string to build up a path you can link to",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js && jsmd readme.md"
   },
   "keywords": [
     "page",
@@ -17,6 +17,7 @@
     "url": "https://github.com/tehshrike/page-path-builder.git"
   },
   "devDependencies": {
+    "jsmd": "^0.3.0",
     "tape": "^3.0.0"
   },
   "dependencies": {
