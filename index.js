@@ -13,11 +13,12 @@ module.exports = function(pathStr, parameters) {
 				return bit.string
 			}
 
-			if (!bit.optional && !parameters[bit.name]) {
+			var defined = typeof parameters[bit.name] !== 'undefined'
+			if (!bit.optional && !defined) {
 				throw new Error('Must supply argument ' + bit.name + ' for path ' + pathStr)
 			}
 
-			return parameters[bit.name] ? (bit.delimiter + encodeURIComponent(parameters[bit.name])) : ''
+			return defined ? (bit.delimiter + encodeURIComponent(parameters[bit.name])) : ''
 		}).join('')
 
 		if (!regex.test(path)) {

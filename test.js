@@ -96,3 +96,14 @@ test('boolean parameter in querystring', function(t) {
 
 	t.end()
 })
+
+test('falsey parameters', function(t) {
+	var path = buildPath('/timer/:week(\\d+)/:day(\\d+)', {
+		week: 0,
+		day: 0
+	})
+
+	t.equal(path, '/timer/0/0')
+
+	t.end()
+})
