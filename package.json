@@ -21,6 +21,7 @@
     "tape": "^3.0.0"
   },
   "dependencies": {
-    "path-to-regexp-with-reversible-keys": "^1.0.1"
+    "path-to-regexp-with-reversible-keys": "^1.0.1",
+    "query-string": "4.3.4"
   }
 }
